@@ -47,7 +47,8 @@ module.exports = (env, argv) => {
       pathinfo: true,
       path: resolve('dist'),
       filename: '[name].js',
-      chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
+      // chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
+      chunkFilename: '[name].chunk.js',
       publicPath: '/',
     },
     optimization: {
@@ -165,7 +166,6 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './template/index.html',
       }),
-
       ...(isDEV ? 
         []
         : [
@@ -175,7 +175,8 @@ module.exports = (env, argv) => {
           }),
           new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[name].[contenthash].css',
+            // chunkFilename: '[name].[contenthash].css',
+            chunkFilename: '[name].chunk.css',
           }),
         ]
       ),
