@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "first",
   "main": "index.js",
-  "homepage": "https://suyunlongsy.github.io/doc",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "webpack --mode production && gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +30,6 @@
     "css-loader": "3.2.0",
     "file-loader": "4.2.0",
     "fs-extra": "8.1.0",
-    "gh-pages": "^2.1.1",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "less": "3.10.3",

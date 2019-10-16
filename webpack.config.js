@@ -48,7 +48,7 @@ module.exports = (env, argv) => {
       path: resolve('dist'),
       filename: '[name].js',
       chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
-      publicPath: isDEV ? '/' : '/doc'
+      publicPath: '/',
     },
     optimization: {
       splitChunks: {
