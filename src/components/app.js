@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   HashRouter as Router,
+  // BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -24,11 +25,11 @@ const App = () => {
 
           <Route 
             exact 
-            path={`/doc/:fileName`} 
+            path={`/detail/:fileName`} 
             component={MdReader}
           />
 
-          <Redirect to={`/index`} />
+          <Redirect from={'*'} to={`/index`} />
         </Switch>
       </Content>
     </Router>

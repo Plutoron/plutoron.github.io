@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "first",
   "main": "index.js",
-  "homepage": "https://yunlong.github.io/doc",
+  "homepage": "https://suyunlongsy.github.io/doc",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d build"
+    "deploy": "webpack --mode production && gh-pages -d dist"
   },
   "keywords": [],
   "author": "",

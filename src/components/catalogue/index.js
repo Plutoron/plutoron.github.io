@@ -41,7 +41,7 @@ class Catalogue extends Component {
           fileName,
         }) => {
           return (<Link
-            to={`/doc/${fileName}`}
+            to={`/detail/${fileName}`}
           >
             <div>{title}</div>
             <div>{time}</div>
