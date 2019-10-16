@@ -19,7 +19,7 @@ const App = () => {
         <Switch>
           <Route 
             exact 
-            path={`/index`} 
+            path={`/`} 
             component={Catalogue}
           />
 
@@ -29,7 +29,7 @@ const App = () => {
             component={MdReader}
           />
 
-          <Redirect from={'*'} to={`/index`} />
+          <Redirect from={'*'} to={`/`} />
         </Switch>
       </Content>
     </Router>
