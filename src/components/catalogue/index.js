@@ -10,7 +10,7 @@ class Catalogue extends Component {
     const list = JSON.parse(info || [])
 
     this.state = {
-      current: 0,
+      current: 1,
       total: list.length || 0,
       pageSize: 10,
       list,
@@ -41,21 +41,27 @@ class Catalogue extends Component {
           fileName,
         }) => {
           return (<Link
+            className="FBH FBJB FBAC pl8 pr8"
+            style={{
+              borderBottom: '1px solid #f5f5f5',
+              height: 45,
+            }}
             to={`/detail/${fileName}`}
           >
-            <div>{title}</div>
-            <div>{time}</div>
+            <div>标题：{title}</div>
+            <div>时间：{time}</div>
           </Link>)
         })
       }
   
-      <div className="FBH FBJE">
+      <div className="FBH FBJE mt16">
         <Pagination
           current={current}
           total={total}
           pageSize={pageSize}
           onChange={this.onPaginationChange}
           size="small"
+          showTotal={total => `共 ${total} 条`}
         />
       </div>
     </div>

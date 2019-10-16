@@ -9,7 +9,7 @@ const MdReader = () => {
   } = useParams()
 
   return <article 
-    className="markdown-body" 
+    className="markdown-body"
     dangerouslySetInnerHTML={{
       __html: require(`markdowns/${fileName}`),
     }}
