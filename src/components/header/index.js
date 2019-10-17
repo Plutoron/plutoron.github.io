@@ -1,17 +1,18 @@
 import * as React from 'react'
 import {github} from 'common/config'
+import {Link} from 'react-router-dom'
 import './header.styl'
 
 import {Icon} from 'antd'
 
 const header = () => {
   return <div className="header FBH FBJA FBAC">
-    <a 
+    <Link 
       className="fc0"
-      href="https://suyunlongsy.github.io/"
+      to={'/'}
     >
       suyunlongsy.github.io
-    </a>
+    </Link>
 
     <span>江山</span>
 
