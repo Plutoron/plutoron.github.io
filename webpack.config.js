@@ -57,8 +57,8 @@ module.exports = (env, argv) => {
             test: /[\\/]node_modules[\\/] || src\//,
             chunks: 'all',
             name: 'common',
-            minSize: 0,
-            minChunks: 1,
+            // minSize: 0,
+            // minChunks: 1,
             enforce: true,
           },
         },
@@ -94,8 +94,7 @@ module.exports = (env, argv) => {
         markdowns: resolve('src/markdowns'),
         mods: resolve('src/components'),
       },
-      extensions: ['.js', '.jsx', '.json', 'css'],
-      mainFields: ['jsnext:main', 'browser', 'main'],
+      extensions: ['.js', '.jsx', '.json', 'css']
     },
     module: {
       rules: [
@@ -164,6 +163,12 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './template/index.html',
+        cdnScripts: [
+            "//unpkg.com/react@16.10.2/umd/react.production.min.js",
+            "//unpkg.com/react-dom@16.10.2/umd/react-dom.production.min.js",
+            "//unpkg.com/react-router-dom@5.1.2/umd/react-router-dom.min.js",
+            "//unpkg.com/antd@3.23.6/dist/antd.min.js"
+          ]
       }),
       ...(isDEV ? 
         []
@@ -178,6 +183,12 @@ module.exports = (env, argv) => {
           }),
         ]
       ),
-    ]
+    ],
+    externals: {
+      antd: 'antd',
+      react: 'React',
+      'react-dom': 'ReactDOM',
+      'react-router-dom': 'ReactRouterDOM'
+    }
   }
 }

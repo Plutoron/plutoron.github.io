@@ -31,7 +31,7 @@ class Catalogue extends Component {
       }
     } = this
 
-    return <div>
+    return <>
       {
         markdownList.map(({
           title, 
@@ -62,7 +62,7 @@ class Catalogue extends Component {
           showTotal={total => `共 ${total} 条`}
         />
       </div>
-    </div>
+    </>
   }
 }
 

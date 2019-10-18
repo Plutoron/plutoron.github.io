@@ -24,12 +24,15 @@ const getFileInfos = () => {
     jsonfile.writeFile(
       `${process.cwd()}/src/info.json`, 
       {
-        markdownList: fileInfoArray,
+        markdownList: fileInfoArray.reverse(),
       }, 
       { spaces: 2 }, 
       err => {
-        if (err) console.error(err)
-        console.log('success????')
+        if (err) {
+          throw new Error(err)
+        }
+
+        console.log('Successed!!!')
       }
     )
   })

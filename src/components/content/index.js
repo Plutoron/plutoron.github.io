@@ -8,10 +8,10 @@ import 'common/flexbox.css'
 import 'common/common.styl'
 
 const Content = ({children}) => {
-  return <div className="pb20">
+  return <div>
     <Header />
     <div 
-      className="content pt20"
+      className="content pt16"
       style={{
         width: '80%',
         margin: '0 auto',
