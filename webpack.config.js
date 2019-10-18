@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // html模版
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin') // 混淆代码
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 压缩 css 并合并成 文件
@@ -163,17 +162,10 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './template/index.html',
-        cdnScripts: [
-            "//unpkg.com/react@16.10.2/umd/react.production.min.js",
-            "//unpkg.com/react-dom@16.10.2/umd/react-dom.production.min.js",
-            "//unpkg.com/react-router-dom@5.1.2/umd/react-router-dom.min.js",
-            "//unpkg.com/antd@3.23.6/dist/antd.min.js"
-          ]
       }),
       ...(isDEV ? 
         []
         : [
-          new webpack.optimize.ModuleConcatenationPlugin(),
           new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist')]
           }),
@@ -184,11 +176,5 @@ module.exports = (env, argv) => {
         ]
       ),
     ],
-    externals: {
-      antd: 'antd',
-      react: 'React',
-      'react-dom': 'ReactDOM',
-      'react-router-dom': 'ReactRouterDOM'
-    }
   }
 }
