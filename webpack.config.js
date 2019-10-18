@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // html模版
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin') // 混淆代码
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 压缩 css 并合并成 文件
@@ -43,11 +44,11 @@ module.exports = (env, argv) => {
     },
     entry: './src/index.js',
     output: {
-      pathinfo: true,
       path: resolve('dist'),
       filename: '[name].js',
       chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
       publicPath: '/',
+      pathinfo: false,
     },
     optimization: {
       splitChunks: {
@@ -56,8 +57,7 @@ module.exports = (env, argv) => {
             test: /[\\/]node_modules[\\/] || src\//,
             chunks: 'all',
             name: 'common',
-            // minSize: 0,
-            // minChunks: 1,
+            priority: 10, //优先级
             enforce: true,
           },
         },
@@ -93,7 +93,7 @@ module.exports = (env, argv) => {
         markdowns: resolve('src/markdowns'),
         mods: resolve('src/components'),
       },
-      extensions: ['.js', '.jsx', '.json', 'css']
+      extensions: ['.js', '.jsx', 'css']
     },
     module: {
       rules: [
