@@ -1,30 +1,12 @@
-import * as React from 'react'
-import {github} from 'common/config'
-import {Link} from 'react-router-dom'
+import {asyncComponent} from 'common/util'
 import './header.styl'
 
-import {Icon} from 'antd'
-
-const header = () => {
-  return <div className="header FBH FBJA FBAC">
-    <Link 
-      className="fc0"
-      to={'/'}
-    >
-      suyunlongsy.github.io
-    </Link>
-
-    <span>江山</span>
-
-    <Icon type="woman" />
-  
-    <a 
-      className="header-follow-button FBH fc0" 
-      href={github} 
-    >
-      <Icon type="github" />
-    </a> 
-  </div>
-}
-
-export default header
+export default asyncComponent(async () => {
+  try {
+    const module = await import('./header')
+    return module.default
+  } catch (error) {
+    console.log(error)
+  }
+  return null
+})
