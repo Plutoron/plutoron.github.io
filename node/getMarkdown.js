@@ -24,7 +24,7 @@ const getFileInfos = () => {
     jsonfile.writeFile(
       `${process.cwd()}/src/info.json`, 
       {
-        info: JSON.stringify(fileInfoArray),
+        markdownList: fileInfoArray,
       }, 
       { spaces: 2 }, 
       err => {

@@ -1,19 +1,17 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {info} from 'src/info.json'
+import {markdownList} from 'src/info.json'
 import {Pagination} from 'antd'
 
 class Catalogue extends Component {
   constructor(props) {
     super(props)
 
-    const list = JSON.parse(info || [])
-
     this.state = {
       current: 1,
-      total: list.length || 0,
+      total: markdownList.length || 0,
       pageSize: 10,
-      list,
+      markdownList,
     }
   }
 
@@ -29,13 +27,13 @@ class Catalogue extends Component {
         current,
         total,
         pageSize,
-        list,
+        markdownList,
       }
     } = this
 
     return <div>
       {
-        list.map(({
+        markdownList.map(({
           title, 
           time, 
           fileName,
