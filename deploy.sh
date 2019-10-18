@@ -1,4 +1,4 @@
-# npm run build
+npm run build
 git checkout master
 rm -rf main.js
 rm -rf index.html
