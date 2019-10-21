@@ -48,7 +48,6 @@ module.exports = (env, argv) => {
       filename: '[name].js',
       chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
       publicPath: '/',
-      pathinfo: false,
     },
     optimization: {
       splitChunks: {
@@ -57,6 +56,8 @@ module.exports = (env, argv) => {
             test: /[\\/]node_modules[\\/] || src\//,
             chunks: 'all',
             name: 'common',
+            minSize: 0,
+            minChunks: 2,
             priority: 10, //优先级
             enforce: true,
           },
