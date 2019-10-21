@@ -96,6 +96,11 @@ module.exports = (env, argv) => {
       },
       extensions: ['.js', '.jsx', 'css']
     },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+      'react-router-dom': 'ReactRouterDOM',
+    },
     module: {
       rules: [
         {
@@ -162,6 +167,11 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
+        jsCdns: [
+          'https://cdn.jsdelivr.net/npm/react@16.10.2/umd/react.production.min.js',
+          'https://cdn.jsdelivr.net/npm/react-dom@16.10.2/umd/react-dom.production.min.js',
+          'https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js',
+        ],
         template: './template/index.html',
       }),
       ...(isDEV ? 
