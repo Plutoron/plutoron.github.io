@@ -1,9 +1,19 @@
 {
   "markdownList": [
     {
+      "time": "19.10.24",
+      "title": "贴一个自己的单页面配置",
+      "fileName": "19.10.24-贴一个自己的单页面配置.md"
+    },
+    {
+      "time": "19.10.24",
+      "title": "webpack打包优化",
+      "fileName": "19.10.24-webpack打包优化.md"
+    },
+    {
       "time": "19.10.18",
-      "title": "搭建自己的Github Page",
-      "fileName": "19.10.18-搭建自己的Github Page.md"
+      "title": "搭建自己的Github Page copy",
+      "fileName": "19.10.18-搭建自己的Github Page copy.md"
     },
     {
       "time": "19.10.15",
