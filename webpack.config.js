@@ -173,6 +173,11 @@ module.exports = (env, argv) => {
           'https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js',
         ],
         template: './template/index.html',
+        minify: {
+          collapseWhitespace: true, // 折叠空白
+          removeComments: true, // 移除注释
+          removeAttributeQuotes: true // 移除属性的引号
+        }
       }),
       ...(isDEV ? 
         []
