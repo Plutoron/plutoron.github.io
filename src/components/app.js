@@ -11,6 +11,7 @@ import {
 import Content from 'mods/content'
 import Catalogue from 'mods/catalogue'
 import MdReader from 'mods/md-reader'
+import Demo from 'mods/demo'
 
 const App = () => {
   return (
@@ -27,6 +28,12 @@ const App = () => {
             exact 
             path={`/detail/:fileName`} 
             component={MdReader}
+          />
+
+          <Route 
+            exact
+            path={'/demo'}
+            component={Demo}
           />
 
           <Redirect from={'*'} to={`/`} />
