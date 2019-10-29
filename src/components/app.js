@@ -11,7 +11,7 @@ import {
 import Content from 'mods/content'
 import Catalogue from 'mods/catalogue'
 import MdReader from 'mods/md-reader'
-import Demo from 'mods/demo'
+import RegionSelect from 'mods/region-select'
 
 const App = () => {
   return (
@@ -32,8 +32,8 @@ const App = () => {
 
           <Route 
             exact
-            path={'/demo'}
-            component={Demo}
+            path={'/region-select'}
+            component={RegionSelect}
           />
 
           <Redirect from={'*'} to={`/`} />
