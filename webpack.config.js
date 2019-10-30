@@ -67,7 +67,7 @@ module.exports = (env, argv) => {
         new UglifyJsPlugin({
           uglifyOptions: {
             compress: {
-              drop_console: true,
+              // drop_console: true,
             },
             ecma: 5,
           },
