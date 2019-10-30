@@ -21,7 +21,8 @@ class Demo extends Component {
   handleRegionChange = value => {
     console.log(value)
   }
-
+ 
+  // format 数据格式 为 antd 通用的 数据格式
   formatProvince = (item) => {
     const formated = item.map(v => {
       let children = []
