@@ -16,8 +16,15 @@ class Catalogue extends Component {
   }
 
   onPaginationChange = page => {
+    const {
+      state: {
+        pageSize,
+      },
+    } = this
+
     this.setState({
       current: page,
+      markdownList: markdownList.filter((v, i) => i > pageSize * (page - 1) - 1 && i < pageSize * page),
     })
   }
 
@@ -47,8 +54,8 @@ class Catalogue extends Component {
             to={`/detail/${fileName}`}
             key={fileName}
           >
-            <div>标题：{title}</div>
-            <div>时间：{time}</div>
+            <div>{title}</div>
+            <div>{time}</div>
           </Link>)
         })
       }
