@@ -14,9 +14,14 @@ const header = () => {
       suyunlongsy.github.io
     </Link>
 
-    <span>江山</span>
+    
+    {/* 动画todo */}
 
-    <Icon type="woman" />
+    <span><Icon className="fs14" type="highlight" /></span>
+    
+    <span><Icon className="fs14" type="fire" /></span>
+    
+    <span><Icon className="fs14" type="heart" /></span>
   
     <a 
       className="header-follow-button FBH fc0" 
