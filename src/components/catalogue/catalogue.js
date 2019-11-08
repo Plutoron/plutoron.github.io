@@ -11,7 +11,7 @@ class Catalogue extends Component {
       current: 1,
       total: markdownList.length || 0,
       pageSize: 10,
-      markdownList,
+      markdownList: markdownList.filter((v, i) => i < 10),
     }
   }
 
