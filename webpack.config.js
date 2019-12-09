@@ -64,26 +64,28 @@ module.exports = (env, argv) => {
         },
       },
       minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            compress: {
-              // drop_console: true,
+        ...(isDEV ? [] : [
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                // drop_console: true,
+              },
+              ecma: 5,
             },
-            ecma: 5,
-          },
-          cache: true,
-          parallel: true,
-          sourceMap: true,
-        }),
-        new OptimizeCSSAssetsPlugin({
-          assetNameRegExp: /\.css$/g,
-          cssProcessorOptions: {
-            parser: safeParser,
-            discardComments: {
-              removeAll: true,
+            cache: true,
+            parallel: true,
+            sourceMap: true,
+          }), 
+          new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessorOptions: {
+              parser: safeParser,
+              discardComments: {
+                removeAll: true,
+              },
             },
-          },
-        }),
+          })]
+        ),
       ],
     },
     resolve: {
@@ -168,9 +170,9 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         jsCdns: [
-          'https://cdn.jsdelivr.net/npm/react@16.10.2/umd/react.production.min.js',
-          'https://cdn.jsdelivr.net/npm/react-dom@16.10.2/umd/react-dom.production.min.js',
-          'https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js',
+          'https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js',
+          'https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js',
+          'https://cdn.bootcss.com/react-router-dom/5.1.2/react-router-dom.min.js',
         ],
         template: './template/index.html',
         minify: {
