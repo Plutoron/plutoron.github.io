@@ -63,30 +63,28 @@ module.exports = (env, argv) => {
           },
         },
       },
-      minimizer: [
-        ...(isDEV ? [] : [
-          new UglifyJsPlugin({
-            uglifyOptions: {
-              compress: {
-                // drop_console: true,
-              },
-              ecma: 5,
-            },
-            cache: true,
-            parallel: true,
-            sourceMap: true,
-          }), 
-          new OptimizeCSSAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessorOptions: {
-              parser: safeParser,
-              discardComments: {
-                removeAll: true,
-              },
-            },
-          })]
-        ),
-      ],
+      minimizer: isDEV ? [] : [
+				new UglifyJsPlugin({
+					uglifyOptions: {
+						compress: {
+							// drop_console: true,
+						},
+						ecma: 5,
+					},
+					cache: true,
+					parallel: true,
+					sourceMap: true,
+				}), 
+				new OptimizeCSSAssetsPlugin({
+					assetNameRegExp: /\.css$/g,
+					cssProcessorOptions: {
+						parser: safeParser,
+						discardComments: {
+							removeAll: true,
+						},
+					},
+        }),
+			],
     },
     resolve: {
       alias: {
