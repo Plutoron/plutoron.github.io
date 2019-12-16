@@ -38,7 +38,7 @@ const Catalogue = () => {
         pageSize={pageSize}
         onChange={page => {
           setCurrent(page)
-          setMarkdownList(markdownList.filter((v, i) => i > pageSize * (page - 1) - 1 && i < pageSize * page))
+          setMarkdownList(markdown.filter((v, i) => i > pageSize * (page - 1) - 1 && i < pageSize * page))
         }}
         size="small"
         showTotal={total => `共 ${total} 条`}
