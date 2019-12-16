@@ -1,6 +1,3 @@
-### 公示鞭尸
-
-```
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // html模版
@@ -11,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 删除 旧的�
 const safeParser = require('postcss-safe-parser') // 添加前缀的规则
 
 const HOST = '127.0.0.1'
-const PORT = '8080'
+const PORT = '8081'
 
 module.exports = (env, argv) => {
   const { 
@@ -66,30 +63,28 @@ module.exports = (env, argv) => {
           },
         },
       },
-      minimizer: [
-        ...(isDEV ? [] : [
-          new UglifyJsPlugin({
-            uglifyOptions: {
-              compress: {
-                // drop_console: true,
-              },
-              ecma: 5,
-            },
-            cache: true,
-            parallel: true,
-            sourceMap: true,
-          }), 
-          new OptimizeCSSAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessorOptions: {
-              parser: safeParser,
-              discardComments: {
-                removeAll: true,
-              },
-            },
-          })]
-        ),
-      ],
+      minimizer: isDEV ? [] : [
+				new UglifyJsPlugin({
+					uglifyOptions: {
+						compress: {
+							// drop_console: true,
+						},
+						ecma: 5,
+					},
+					cache: true,
+					parallel: true,
+					sourceMap: true,
+				}), 
+				new OptimizeCSSAssetsPlugin({
+					assetNameRegExp: /\.css$/g,
+					cssProcessorOptions: {
+						parser: safeParser,
+						discardComments: {
+							removeAll: true,
+						},
+					},
+        }),
+			],
     },
     resolve: {
       alias: {
@@ -173,9 +168,9 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         jsCdns: [
-          'https://cdn.jsdelivr.net/npm/react@16.10.2/umd/react.production.min.js',
-          'https://cdn.jsdelivr.net/npm/react-dom@16.10.2/umd/react-dom.production.min.js',
-          'https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js',
+          'https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js',
+          'https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js',
+          'https://cdn.bootcss.com/react-router-dom/5.1.2/react-router-dom.min.js',
         ],
         template: './template/index.html',
         minify: {
@@ -199,4 +194,3 @@ module.exports = (env, argv) => {
     ],
   }
 }
-```
