@@ -5,14 +5,13 @@
   ],
   "plugins": [
     "@babel/transform-runtime",
-    [
-      "import", 
-      {
-        "libraryName": "antd",
-        "libraryDirectory": "lib",   // default: lib
-        "style": true
-      }
-    ],
+    // [
+    //   "import", 
+    //   {
+    //     "libraryName": "antd",
+    //     "style": true
+    //   }
+    // ],
     [
       "@babel/plugin-proposal-class-properties", 
       { 
