@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {withRouter} from 'react-router-dom'
 import Header from 'mods/header'
-import MdReader from 'mods/md-reader'
 
 // 样式
 import 'common/flexbox.css'
