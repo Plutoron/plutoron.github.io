@@ -10,15 +10,14 @@ const safeParser = require('postcss-safe-parser') // 添加前缀的规则
 const HOST = '127.0.0.1'
 const PORT = '8081'
 
+const theme = require('./theme.json')
+const resolve = dir => path.join(__dirname, dir)
+
 module.exports = (env, argv) => {
   const { 
     mode,  // 通过 mode 判断 开发 和 生产
   } = argv
 
-  const resolve = dir => path.join(__dirname, dir)
-
-  const theme = resolve('theme.js')
-  
   const isDEV = mode === 'development'
 
   return {
@@ -169,9 +168,6 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        cssCdns: [
-          'https://cdn.bootcss.com/antd/3.23.6/antd.min.css',
-        ],
         jsCdns: [
           'https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js',
           'https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js',

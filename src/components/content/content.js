@@ -2,7 +2,8 @@ import * as React from 'react'
 import {withRouter} from 'react-router-dom'
 import Header from 'mods/header'
 
-// 样式
+// 样式‘
+import 'antd/dist/antd.less'
 import 'common/flexbox.css'
 import 'common/common.styl'
 
