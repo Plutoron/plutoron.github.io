@@ -1,6 +1,11 @@
 {
-  "total": 33,
+  "total": 34,
   "markdown": [
+    {
+      "time": "19.12.24",
+      "title": "node 简易本地静态服务",
+      "fileName": "19.12.24-node 简易本地静态服务.md"
+    },
     {
       "time": "19.12.19",
       "title": "接口 定义返回结果原则",
