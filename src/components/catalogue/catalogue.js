@@ -1,13 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {Link} from 'react-router-dom'
 import {Pagination} from 'antd'
 import {markdown} from 'src/info.json'
 
 const Catalogue = () => {
-  const [current, setCurrent] = useState(1)
-  const [total, setTotal] = useState(markdown.length || 0)
-  const [pageSize, setPageSize] = useState(10)
   const [markdownList, setMarkdownList] = useState(markdown.filter((v, i) => i < 10))
+
+  const {current: store} = useRef({
+    current: 1,
+    total: markdown.length || 0,
+    pageSize: 10,
+  })
 
   return <>
     {
@@ -33,12 +36,12 @@ const Catalogue = () => {
 
     <div className="FBH FBJE mt16">
       <Pagination
-        current={current}
-        total={total}
-        pageSize={pageSize}
+        current={store.current}
+        total={store.total}
+        pageSize={store.pageSize}
         onChange={page => {
-          setCurrent(page)
-          setMarkdownList(markdown.filter((v, i) => i > pageSize * (page - 1) - 1 && i < pageSize * page))
+          store.current = page
+          setMarkdownList(markdown.filter((v, i) => i > store.pageSize * (page - 1) - 1 && i < store.pageSize * page))
         }}
         size="small"
         showTotal={total => `共 ${total} 条`}
