@@ -161,7 +161,13 @@ module.exports = (env, argv) => {
           test: /\.md$/,
           use: [
             'html-loader', 
-            'markdown-loader'
+            {
+              loader: '@yunlong.syl/markdown-loader',
+              options: {
+                decodeImgSrc: true,
+                decodeAHref: true,
+              }
+            }
           ]
         }
       ]
