@@ -22,7 +22,8 @@ module.exports = (env, argv) => {
 
   return {
     devServer: {
-      contentBase: [resolve('node_modules')],
+      // contentBase: [resolve('node_modules')],
+      contentBase: __dirname,
       compress: true,
       inline: true,
       hot: true,
@@ -99,8 +100,8 @@ module.exports = (env, argv) => {
       react: 'React',
       'react-dom': 'ReactDOM',
       'react-router-dom': 'ReactRouterDOM',
-      'antd': 'antd',
-      'moment': 'moment',
+      antd: 'antd',
+      moment: 'moment',
     },
     module: {
       rules: [
@@ -174,13 +175,13 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        jsCdns: [
-          'https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js',
-          'https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js',
-          'https://cdn.bootcss.com/react-router-dom/5.1.2/react-router-dom.min.js',
-          'https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js',
-          'https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js',
-          'https://cdn.bootcss.com/antd/3.23.6/antd-with-locales.min.js',
+        jses: [
+          '/vendor/react/16.12.0/react.production.min.js',
+          '/vendor/react-dom/16.12.0/react-dom.production.min.js',
+          '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
+          '/vendor/moment/2.24.0/moment.min.js',
+          '/vendor/moment/2.24.0/locale/zh-cn.js',
+          '/vendor/antd/3.26.7/antd-with-locales.min.js',
         ],
         template: './template/index.html',
         minify: {

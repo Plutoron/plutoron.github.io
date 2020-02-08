@@ -19,18 +19,19 @@ const Catalogue = () => {
         time, 
         fileName,
       }) => {
-        return (<Link
+        return (<a
           className="FBH FBJB FBAC pl8 pr8"
           style={{
             borderBottom: '1px solid #f5f5f5',
             height: 45,
           }}
-          to={`/detail/${fileName}`}
+          // to={`/detail/${fileName}`}
           key={fileName}
+          onClick={() => window.open(`/#/detail/${fileName}`)}
         >
           <div>{title}</div>
           <div>{time}</div>
-        </Link>)
+        </a>)
       })
     }
 

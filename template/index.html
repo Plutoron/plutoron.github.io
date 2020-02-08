@@ -9,7 +9,7 @@
 <body>
   <div id="app"></div>
   
-  <% htmlWebpackPlugin.options.jsCdns.map(item => {{ %>
+  <% htmlWebpackPlugin.options.jses.map(item => {{ %>
     <script type="text/javascript" src="<%= item %>"></script>
   <% }}) %>
 </body>

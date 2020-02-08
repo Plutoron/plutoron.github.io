@@ -14,9 +14,10 @@ const getFileInfos = () => {
     }
 
     const fileInfoArray = dir.map(fileName => {
+      const array = fileName.split('-')
       return {
-        time: fileName.split('-')[0],
-        title: fileName.split('-')[1].replace('.md', ''),
+        time: array[0],
+        title: array.slice(1).join('-').replace('.md', ''),
         fileName,
       }
     })
