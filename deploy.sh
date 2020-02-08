@@ -3,7 +3,7 @@ git add .
 git commit -m 'deploy'
 git push origin dev
 npm run build
-cp -r ./vendor ./build
+cp -r ./vendor ./dist
 git checkout master
 rm -rf index.html
 rm -rf *.js
