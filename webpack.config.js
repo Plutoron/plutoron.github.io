@@ -159,6 +159,15 @@ module.exports = (env, argv) => {
           }
         }, 
         {
+          test: /\.pdf$/,
+          use: {
+            loader: 'file-loader',
+            // options: {
+            //   name: 'doc/[name].[ext]'
+            // }
+          }
+        },
+        {
           test: /\.md$/,
           use: [
             'html-loader', 

@@ -13,6 +13,7 @@ import Catalogue from 'mods/catalogue'
 import MdReader from 'mods/md-reader'
 import RegionSelect from 'mods/region-select'
 import Mark from 'mods/mark'
+import ReactPDF from 'mods/react-pdf'
 
 const App = () => {
   return (
@@ -42,6 +43,12 @@ const App = () => {
             path={'/mark'}
             component={Mark}
           />
+
+          <Route 
+            exact
+            path={'/react-pdf'}
+            component={ReactPDF}
+          />  
 
           <Redirect from={'*'} to={`/`} />
         </Switch>
