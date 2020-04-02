@@ -35,6 +35,7 @@ const getFileInfos = () => {
         }
 
         console.log('Successed!!!')
+        console.log('http://127.0.0.1:8081')
       }
     )
   })
