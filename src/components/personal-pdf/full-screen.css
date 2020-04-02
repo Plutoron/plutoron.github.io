@@ -1,0 +1,27 @@
+/* 全屏 */
+.pdf-reader-fullscreen-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ddd;
+    z-index: 100;
+    overflow: auto;
+}
+
+.pdf-reader-fullscreen-header {
+    background-color: #222;
+    color: #fff;
+    z-index: 100;
+}
+
+.pdf-reader-fullscreen-toolbar {
+    height: 48px;
+    min-height: 48px;
+    background-color: #f5f5f5;
+    user-select: none;
+}
+
+#pdf-full-screen-reader-wrap {
+    transform-origin: left top;
+    transform: scale(1);
+}
