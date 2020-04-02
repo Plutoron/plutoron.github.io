@@ -4,6 +4,7 @@ git commit -m 'deploy'
 git push origin dev
 npm run build
 cp -r ./vendor ./dist
+cp -r ./node_modules/pdfjs-dist/cmaps ./dist
 git checkout master
 rm -rf index.html
 rm -rf *.js

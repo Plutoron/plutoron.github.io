@@ -199,6 +199,9 @@ module.exports = (env, argv) => {
           removeAttributeQuotes: true // 移除属性的引号
         }
       }),
+      new webpack.DefinePlugin({
+        __DEV__: isDev,
+      }),
       ...(isDEV ? 
         []
         : [

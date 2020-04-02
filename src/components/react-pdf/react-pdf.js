@@ -1,27 +1,30 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
-import { Document, Page } from 'react-pdf'
-
+import { Spin } from 'antd'
+import PersonalPdf from '../personal-pdf' 
 import test from './test.pdf'
 
 const ReactPDF = () => {
-  const [pageNumber, setPageNumber] = useState(1)
-  const [numPages, setNumPages] = useState(1)
+  const [domLoading, setDmgLoading] = useState(true)
+  const {current: store} = useRef({
+    pdfDom: null
+  })
 
+  useEffect(() => {
+    setDmgLoading(false)
+  }, [])
 
-  return <div>
-    <Document
-      file={test}
-      onLoadSuccess={({ numPages }) => {
-        console.log(numPages)
-
-        setNumPages(numPages)
-      }}
-    >
-      <Page pageNumber={pageNumber} />
-    </Document>
-    <p>Page {pageNumber} of {numPages}</p>
-    <a onClick={() => setPageNumber(pageNumber + 1)}>+1</a> <a onClick={() => setPageNumber(pageNumber - 1)}>-1</a>
+  return <div ref={ref => store.pdfDom = ref}>
+    {
+      domLoading 
+        ? <div className="tac w100 mt24"><Spin wrapperClassName="w100 tac" size="small" spinning={domLoading} /></div>
+        : <PersonalPdf 
+          containner={store.pdfDom} 
+          fileName={'test'} 
+          fileUrl={test} 
+          // fileLink={file.previewUrl} 
+        />
+    }
   </div>
 }
 
