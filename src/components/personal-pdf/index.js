@@ -178,7 +178,7 @@ const PDFViewer = ({ fileName, fileUrl, fileLink, containner, openFullscreen }) 
                         <Spin spinning size="small" />
                     </div>
                 ) : (
-                    <ActionBar fileName={fileName} fileLink={fileLink} store={store} openFullscreen={openFullscreen} />
+                    <ActionBar fileName={fileName} store={store} fileLink={fileLink} openFullscreen={openFullscreen} />
                 )}
             </div>
 

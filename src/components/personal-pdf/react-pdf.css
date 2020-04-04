@@ -18,7 +18,7 @@
     user-select: none;
 }
 
-.action-disable {
+.pdf-reader-toolbar .action-disable {
     color: #ddd;
     cursor: not-allowed;
 }

@@ -21,6 +21,11 @@
     user-select: none;
 }
 
+.pdf-reader-fullscreen-toolbar .action-disable {
+    color: #ddd;
+    cursor: not-allowed;
+}
+
 #pdf-full-screen-reader-wrap {
     transform-origin: left top;
     transform: scale(1);
