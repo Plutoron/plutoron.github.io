@@ -73,7 +73,7 @@ class MyPlugin {
       ${cacheStorageStr}
       ${serviceWorkerStr}
       `
-      fs.writeFile('./dist/service-work.js', _writeStr, function (err) {
+      fs.writeFile('./dist/service-worker.js', _writeStr, function (err) {
         if(err) {
           console.error(err);
           } else {
