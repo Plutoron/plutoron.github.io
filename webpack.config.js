@@ -7,6 +7,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') //
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 删除 旧的文件 
 const safeParser = require('postcss-safe-parser') // 添加前缀的规则
 
+const MyPlugin = require('./my-plugin')
+
 const HOST = '127.0.0.1'
 const PORT = '8081'
 
@@ -183,6 +185,16 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
+      new MyPlugin({
+        files: [
+          '/vendor/react/16.12.0/react.production.min.js',
+          '/vendor/react-dom/16.12.0/react-dom.production.min.js',
+          '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
+          '/vendor/moment/2.24.0/moment.min.js',
+          '/vendor/moment/2.24.0/locale/zh-cn.js',
+          '/vendor/antd/3.26.7/antd-with-locales.min.js',
+        ],
+      }),
       new HtmlWebpackPlugin({
         jses: [
           '/vendor/react/16.12.0/react.production.min.js',
@@ -191,6 +203,7 @@ module.exports = (env, argv) => {
           '/vendor/moment/2.24.0/moment.min.js',
           '/vendor/moment/2.24.0/locale/zh-cn.js',
           '/vendor/antd/3.26.7/antd-with-locales.min.js',
+          // '/service-work-app.js'
         ],
         template: './template/index.html',
         minify: {
@@ -200,7 +213,7 @@ module.exports = (env, argv) => {
         }
       }),
       new webpack.DefinePlugin({
-        __DEV__: isDev,
+        __DEV__: isDEV,
       }),
       ...(isDEV ? 
         []
