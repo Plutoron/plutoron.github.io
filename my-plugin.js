@@ -1,45 +1,49 @@
-const fs = require('fs')
+const fs = require("fs");
 
 class MyPlugin {
-  constructor(options) {
-    console.log(options)
-    this.options = options
-    let _files = []
+	constructor(options) {
+		this.options = options;
+		let _files = [];
 
-    if (options.files && Array.isArray(options.files)) {
-      _files = options.files
-    }
+		if (options.files && Array.isArray(options.files)) {
+			_files = options.files;
+		}
 
-    this.defaultFile = ['index.html', 'main.js', ..._files]
-    this.commonFile = []
-  }
+		this.defaultFile = ["index.html", "main.js", ..._files];
+		this.commonFile = [];
+	}
 
-  isCommonFile(value) {
-    // const _reg = new RegExp(/^common(.(\d+))?.(js|css)$/)
-    let _reg = new RegExp(/^common(.(\w+))?.(js|css)$/)
-    return _reg.test(value)
-  }
+	isCommonFile(value) {
+		// const _reg = new RegExp(/^common(.(\d+))?.(js|css)$/)
+		let _reg = new RegExp(/^common(.(\w+))?.(js|css)$/);
+		return _reg.test(value);
+	}
 
-  isImageFile(value) {
-    // const _reg = new RegExp(/^common(.(\d+))?.(js|css)$/)
-    return value.startsWith('images/')
-  }
+	isImageFile(value) {
+		// const _reg = new RegExp(/^common(.(\d+))?.(js|css)$/)
+		return value.startsWith("images/");
+	}
 
-  apply(compiler) {
-    compiler.hooks.afterEmit.tapAsync('afterEmit', (compilation, callback) => {
-      // 生成资源到 output 目录之后。
-      this.commonFile = Object.keys(compilation.assets).reduce((pre, v) => {
-        if (this.isCommonFile(v) || this.isImageFile(v)) {
-          pre.push(v)
-        }
+	apply(compiler) {
+		const isDEV = compiler.options.mode === "development";
 
-        return pre
-      }, [])
+		compiler.hooks.afterEmit.tapAsync("afterEmit", (compilation, callback) => {
+			// 生成资源到 output 目录之后。
+			this.commonFile = Object.keys(compilation.assets).reduce((pre, v) => {
+				if (this.isCommonFile(v) || this.isImageFile(v)) {
+					pre.push(v);
+				}
 
-      const cacheFilesStr = `const cacheFiles = ${JSON.stringify([...this.defaultFile, ...this.commonFile])}`
-      const cacheStorageStr = `const cacheStorageKey = 'cache-${Date.now()}'`
+				return pre;
+			}, []);
 
-      const serviceWorkerStr = `
+			const cacheFilesStr = `const cacheFiles = ${JSON.stringify([
+				...this.defaultFile,
+				...this.commonFile,
+			])}`;
+			const cacheStorageStr = `const cacheStorageKey = 'cache-${Date.now()}'`;
+
+			const serviceWorkerStr = `
       self.addEventListener("install", event => {
         self.skipWaiting();
         event.waitUntil(
@@ -66,24 +70,29 @@ class MyPlugin {
 
         event.waitUntil(self.clients.claim());
       });
-      `
+      `;
 
-      const _writeStr = `
+			const _writeStr = `
       ${cacheFilesStr}
       ${cacheStorageStr}
       ${serviceWorkerStr}
-      `
-      fs.writeFile('./dist/service-worker.js', _writeStr, function (err) {
-        if(err) {
-          console.error(err);
-          } else {
-            console.log('写入成功');
-          }
-      })
+      `;
+			fs.writeFile(
+				`.${isDEV ? "" : "/dist/"}/service-worker.js`,
+				_writeStr,
+				function (err) {
+					// fs.writeFile(`/service-worker.js`, _writeStr, function (err) {
+					if (err) {
+						console.error(err);
+					} else {
+						console.log("写入成功");
+					}
+				}
+			);
 
-      const _serviceWorkerAppStr = `
+			const _serviceWorkerAppStr = `
       if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('./service-worker.js', {scope: './'})
+        navigator.serviceWorker.register('/service-worker.js')
             .then((req) => {
                 console.log(req)
             })
@@ -93,19 +102,24 @@ class MyPlugin {
       } else {
         alert('not support serviceWorker')
       }
-      `
+      `;
 
-      // fs.writeFile('./dist/service-work-app.js', _serviceWorkerAppStr, function (err) {
-      //   if(err) {
-      //     console.error(err);
-      //     } else {
-      //       console.log('写入成功');
-      //     }
-      // })
+			fs.writeFile(
+				`.${isDEV ? "" : "/dist/"}/service-worker-app.js`,
+				_serviceWorkerAppStr,
+				function (err) {
+					// fs.writeFile(`/service-worker-app.js`, _serviceWorkerAppStr, function (err) {
+					if (err) {
+						console.error(err);
+					} else {
+						console.log("写入成功");
+					}
+				}
+			);
 
-      callback()
-    });
-  }
+			callback();
+		});
+	}
 }
 
-module.exports = MyPlugin
+module.exports = MyPlugin;
