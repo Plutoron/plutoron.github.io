@@ -52,6 +52,10 @@ module.exports = (env, argv) => {
       publicPath: '/',
     },
     optimization: {
+      ...(isDEV ? {} : {
+        removeAvailableModules: true,
+        sideEffects: true,
+      }),
       splitChunks: {
         cacheGroups: {
           common: {
