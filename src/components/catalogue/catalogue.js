@@ -37,12 +37,19 @@ const Catalogue = () => {
 
     <div className="FBH FBJE mt16">
       <Pagination
-        current={store.current}
         total={store.total}
-        pageSize={store.pageSize}
-        onChange={page => {
+        defaultPageSize={10}
+        current={store.current}
+        onShowSizeChange={(current, size) => {
+          store.current = 1
+          store.pageSize = size
+
+          setMarkdownList(markdown.filter((v, i) => i > store.pageSize * (store.current - 1) - 1 && i < store.pageSize * store.current))
+        }}
+        onChange={(page, pageSize) => {      
           store.current = page
-          setMarkdownList(markdown.filter((v, i) => i > store.pageSize * (page - 1) - 1 && i < store.pageSize * page))
+    
+          setMarkdownList(markdown.filter((v, i) => i > store.pageSize * (store.current - 1) - 1 && i < store.pageSize * store.current))
         }}
         size="small"
         showTotal={total => `共 ${total} 条`}

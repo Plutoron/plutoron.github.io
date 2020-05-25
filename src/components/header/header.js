@@ -3,7 +3,7 @@ import {github} from 'common/config'
 import {Link} from 'react-router-dom'
 import './header.styl'
 
-import {Icon} from 'antd'
+import {FireFilled, HighlightFilled, HeartFilled, GithubFilled} from '@ant-design/icons'
 
 const header = () => {
   return <div className="header FBH FBJA FBAC">
@@ -17,17 +17,17 @@ const header = () => {
     
     {/* 动画todo */}
 
-    <span><Icon className="fs14" type="highlight" /></span>
+    <span><HighlightFilled className="fs14" /></span>
     
-    <span><Icon className="fs14" type="fire" /></span>
+    <span><FireFilled className="fs14" /></span>
     
-    <span><Icon className="fs14" type="heart" /></span>
+    <span><HeartFilled className="fs14" /></span>
   
     <a 
       className="header-follow-button FBH fc0" 
       href={github} 
     >
-      <Icon type="github" />
+      <GithubFilled />
     </a> 
   </div>
 }

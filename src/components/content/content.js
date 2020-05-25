@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import Header from 'mods/header'
 
 // 样式‘
-import 'antd/dist/antd.less'
+// import 'antd/dist/antd.less'
 import 'common/flexbox.css'
 import 'common/common.styl'
 

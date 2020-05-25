@@ -7,6 +7,11 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') //
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 删除 旧的文件 
 const safeParser = require('postcss-safe-parser') // 添加前缀的规则
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
+
 const MyPlugin = require('./my-plugin')
 
 const HOST = '127.0.0.1'
@@ -38,8 +43,8 @@ module.exports = (env, argv) => {
       historyApiFallback: {
         disableDotRule: true
       },
-      open: false,
-      quiet: false,
+      open: true,
+      quiet: true,
       overlay: {
         errors: true
       },
@@ -57,6 +62,7 @@ module.exports = (env, argv) => {
         sideEffects: true,
       }),
       splitChunks: {
+        name: true,
         cacheGroups: {
           common: {
             test: /[\\/]node_modules[\\/] || src\//,
@@ -70,10 +76,10 @@ module.exports = (env, argv) => {
         },
       },
       minimizer: [ 
-        new TerserPlugin({
-          parallel: true,
-        }), 
         ...(isDEV ? [] : [
+          new TerserPlugin({
+            parallel: true,
+          }),
           new OptimizeCSSAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessorOptions: {
@@ -94,13 +100,6 @@ module.exports = (env, argv) => {
         mods: resolve('src/components'),
       },
       extensions: ['.js', '.jsx', 'css']
-    },
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-      'react-router-dom': 'ReactRouterDOM',
-      antd: 'antd',
-      moment: 'moment',
     },
     module: {
       rules: [
@@ -123,7 +122,16 @@ module.exports = (env, argv) => {
                 ]
               }
             },
-            `less-loader?{"sourceMap":true, "modifyVars":${JSON.stringify(theme)}, "javascriptEnabled": true}`,
+            {
+              loader: 'less-loader',
+              options: {
+                lessOptions: {
+                  sourceMap: true, 
+                  modifyVars: theme, 
+                  javascriptEnabled: true
+                }
+              }
+            }
           ], // 注意排列顺序，执行顺序与排列顺序相反
         },
         {
@@ -182,24 +190,14 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new MyPlugin({
-        files: [
-          '/vendor/react/16.12.0/react.production.min.js',
-          '/vendor/react-dom/16.12.0/react-dom.production.min.js',
-          '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
-          '/vendor/moment/2.24.0/moment.min.js',
-          '/vendor/moment/2.24.0/locale/zh-cn.js',
-          '/vendor/antd/3.26.7/antd-with-locales.min.js',
-        ],
-      }),
       new HtmlWebpackPlugin({
         jses: [
-          '/vendor/react/16.12.0/react.production.min.js',
-          '/vendor/react-dom/16.12.0/react-dom.production.min.js',
-          '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
-          '/vendor/moment/2.24.0/moment.min.js',
-          '/vendor/moment/2.24.0/locale/zh-cn.js',
-          '/vendor/antd/3.26.7/antd-with-locales.min.js',
+          // '/vendor/react/16.12.0/react.production.min.js',
+          // '/vendor/react-dom/16.12.0/react-dom.production.min.js',
+          // '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
+          // '/vendor/moment/2.24.0/moment.min.js',
+          // '/vendor/moment/2.24.0/locale/zh-cn.js',
+          // '/vendor/antd/3.26.7/antd-with-locales.min.js',
           '/service-worker-app.js'
         ],
         template: './template/index.html',
@@ -222,6 +220,26 @@ module.exports = (env, argv) => {
             filename: '[name].css',
             chunkFilename: '[name].[contenthash].css'
           }),
+          new MyPlugin({
+            files: [
+              // '/vendor/react/16.12.0/react.production.min.js',
+              // '/vendor/react-dom/16.12.0/react-dom.production.min.js',
+              // '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
+              // '/vendor/moment/2.24.0/moment.min.js',
+              // '/vendor/moment/2.24.0/locale/zh-cn.js',
+              // '/vendor/antd/3.26.7/antd-with-locales.min.js',
+            ],
+          }),
+          new CompressionWebpackPlugin({
+            filename: "[path].gz[query]",
+            algorithm: "gzip",
+            test: productionGzipExtensions,
+            threshold: 10240,
+            minRatio: 0.8
+          })
+          // new BundleAnalyzerPlugin({
+          //   analyzerPort: 3000
+          // })
         ]
       ),
     ],

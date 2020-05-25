@@ -85,7 +85,7 @@ class MyPlugin {
 					if (err) {
 						console.error(err);
 					} else {
-						console.log("写入成功");
+						console.log("写入service-worker成功");
 					}
 				}
 			);
@@ -112,7 +112,7 @@ class MyPlugin {
 					if (err) {
 						console.error(err);
 					} else {
-						console.log("写入成功");
+						console.log("写入service-worker-app成功");
 					}
 				}
 			);

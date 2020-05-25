@@ -15,7 +15,7 @@ const ReactPDF = () => {
   }, [])
 
   return <div ref={ref => store.pdfDom = ref}>
-    {
+    {/* {
       domLoading 
         ? <div className="tac w100 mt24"><Spin wrapperClassName="w100 tac" size="small" spinning={domLoading} /></div>
         : <PersonalPdf 
@@ -24,7 +24,8 @@ const ReactPDF = () => {
           fileUrl={test} 
           // fileLink={file.previewUrl} 
         />
-    }
+    } */}
+    直接托管 pdfjs 静态服务 完美
   </div>
 }
 

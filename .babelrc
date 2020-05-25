@@ -18,6 +18,7 @@
         "regenerator": true,
         "useESModules": false
       }
-    ]
+    ],
+    ["import", { "libraryName": "antd", "style": true }]
   ]
 }

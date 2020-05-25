@@ -8,5 +8,6 @@
     "@orange-6": "#FF8E4A",
     "@yellow-6": "#FFD559",
     "@shadow-color": "rgba(3, 48, 76, .15)",
-    "@font-size-base": "12px"
+    "@font-size-base": "12px",
+    "@border-radius-base": "4px"
 }
