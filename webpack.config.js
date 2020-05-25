@@ -230,13 +230,13 @@ module.exports = (env, argv) => {
               // '/vendor/antd/3.26.7/antd-with-locales.min.js',
             ],
           }),
-          new CompressionWebpackPlugin({
-            filename: "[path].gz[query]",
-            algorithm: "gzip",
-            test: productionGzipExtensions,
-            threshold: 10240,
-            minRatio: 0.8
-          })
+          // new CompressionWebpackPlugin({
+          //   filename: "[path].gz[query]",
+          //   algorithm: "gzip",
+          //   test: productionGzipExtensions,
+          //   threshold: 10240,
+          //   minRatio: 0.8
+          // })
           // new BundleAnalyzerPlugin({
           //   analyzerPort: 3000
           // })
