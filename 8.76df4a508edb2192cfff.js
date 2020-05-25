@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{161:function(e,n,t){"use strict";t.r(n);var c=t(0),a=Object(c.lazy)((function(){return t.e(2).then(t.bind(null,41))}));n.default=function(){return React.createElement(c.Suspense,{fallback:"加载文章中"},React.createElement(a,null))}}}]);
