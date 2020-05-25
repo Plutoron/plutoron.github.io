@@ -4,10 +4,7 @@ git commit -m 'deploy'
 git push origin dev
 npm run build
 git checkout master
-rm -rf index.html
-rm -rf *.js
-rm -rf *.css
-rm -rf images
+rm -rf `ls  |egrep -v dist`   
 mv dist/* ./
 git add .
 git commit -m 'publish ++'
