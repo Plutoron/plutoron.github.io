@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {github} from 'common/config'
 import {Link} from 'react-router-dom'
-import './header.styl'
 
 import {FireFilled, HighlightFilled, HeartFilled, GithubFilled} from '@ant-design/icons'
 
