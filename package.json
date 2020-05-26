@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "first",
   "main": "index.js",
+  "sideEffects": [
+    "*.styl",
+    "*.css"
+  ],
   "scripts": {
     "start": "npm run update && webpack-dev-server --mode development --hot --progress",
     "update": "node node/getMarkdown.js src/markdowns",
