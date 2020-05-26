@@ -59,7 +59,6 @@ module.exports = (env, argv) => {
     optimization: {
       ...(isDEV ? {} : {
         removeAvailableModules: true,
-        sideEffects: true,
       }),
       splitChunks: {
         name: true,
