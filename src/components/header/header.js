@@ -3,7 +3,7 @@ import {github} from 'common/config'
 import {Link} from 'react-router-dom'
 
 import {FireFilled, HighlightFilled, HeartFilled, GithubFilled} from '@ant-design/icons'
-
+import './header.styl'
 
 const header = () => {
   return <div className="header FBH FBJA FBAC">
