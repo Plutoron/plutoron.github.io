@@ -1,47 +1,22 @@
 class Solution:
-  def longestPalindrome(self, s: str) -> str:
-    max = 0
-    mid = int(s.__len__() / 2)
+  def isPalindrome(self, x: int) -> bool:
+    if x < 0:
+      return False
 
-    for index, v in enumerate(s):
-      _range = index if index < mid else s.__len__() - mid
-      pre = ''
-      after = ''
-      length = 0
-
-      # 中间对称
-      for cursor in range(index):
-        cursor = cursor + 1
+    _list = list(str(x))
+    _r_list = list(str(x))
   
-        outRight = index - cursor < 0
-        outLeft = index + 1 + cursor > s.__len__()
+    _r_list.reverse()
 
-        if (not outLeft) and (not outRight):
-          pre = s[(index - cursor):index]
-          after = s[(index + 1): (index + 1 + cursor)]
-
-          print(pre, after)
-
-      # 镜像对称
-      for cursor in range(index):
-        cursor = cursor + 1
+    str1 = ''.join(x for x in _list)
+    str2 = ''.join(x for x in _r_list)
   
-        outRight = index - cursor < 0
-        outLeft = index + 2 + cursor > s.__len__()
+    return str1 == str2
 
-        if (not outLeft) and (not outRight):
-          pre = s[(index - cursor):(index + 1)]
-          after = s[(index + 1): (index + 2 + cursor)]
+isPalindrome1 = Solution().isPalindrome(121)
+isPalindrome2 = Solution().isPalindrome(-121)
+isPalindrome3 = Solution().isPalindrome(10)
 
-          print(pre, after)
-
-
-
-
-    
-
-longestPalindrome = Solution().longestPalindrome('abcbc')
-
-print(longestPalindrome)
-
-print('sss'[1:2])
+print(isPalindrome1)
+print(isPalindrome2)
+print(isPalindrome3)
