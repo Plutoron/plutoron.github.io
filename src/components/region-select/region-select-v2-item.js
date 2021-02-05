@@ -36,6 +36,7 @@ export default ({
       placeholder={placeholder}
       notFoundContent={notFoundContent}
       optionFilterProp={optionFilterProp}
+      getPopupContainer={triggerRef => triggerRef.parentNode}
     >
       {
         options.map(v => <Option value={v.value} data={v.children}>{v.label}</Option>)

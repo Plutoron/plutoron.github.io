@@ -1,4 +1,4 @@
-import {Component, Fragment} from 'react'
+import React, {Component, Fragment} from 'react'
 import RegionSelect from './region-select'
 import RegionSelectV2 from './region-select-v2'
 import "common/github-markdown.css"
