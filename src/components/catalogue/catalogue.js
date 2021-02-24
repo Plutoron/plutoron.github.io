@@ -30,7 +30,7 @@ const Catalogue = () => {
           onClick={() => window.open(`/#/detail/${fileName}`)}
         >
           <div>{title}</div>
-          <div>{time}</div>
+          {/* <div>{time}</div> */}
         </a>)
       })
     }
