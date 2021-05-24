@@ -1,0 +1,1 @@
+console.log('100000000000'.replace(/(?!^)(?=(\d{3})+$)/g, (match) => `,${match}`))

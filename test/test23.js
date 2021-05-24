@@ -1,4 +1,3 @@
-```
 var getMixed = arrayList => {
 	return arrayList.reduce(((pre, value, index, array) => {
 		if (index === 0) {
@@ -21,4 +20,3 @@ console.log(getMixed([
 	[3,2,6],
 	[3,1,3,2,5],
 ]))
-```
