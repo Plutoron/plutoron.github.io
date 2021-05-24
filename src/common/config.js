@@ -1,3 +1,3 @@
 module.exports = {
-  github: 'https://github.com/suyunlongsy',
+  github: 'https://github.com/plutoron',
 }

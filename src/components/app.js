@@ -15,7 +15,7 @@ const Catalogue = lazy(() => import('mods/catalogue'))
 const MdReader = lazy(() => import('mods/md-reader'))
 const RegionSelect = lazy(() => import('mods/region-select'))
 const Mark = lazy(() => import('mods/mark'))
-const ReactPDF = lazy(() => import('mods/react-pdf'))
+// const ReactPDF = lazy(() => import('mods/react-pdf'))
 
 const App = () => {
   return (
@@ -47,11 +47,11 @@ const App = () => {
               component={Mark}
             />
 
-            <Route 
+            {/* <Route 
               exact
               path={'/react-pdf'}
               component={ReactPDF}
-            />  
+            />   */}
 
             <Redirect from={'*'} to={`/`} />
           </Switch>
