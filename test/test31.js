@@ -22,4 +22,3 @@ function getIndex(arr){
 
 console.log(getIndex([10,21,0,-7,35,7,9,23,18]))
 
-
