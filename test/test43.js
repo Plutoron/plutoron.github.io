@@ -89,22 +89,15 @@ const getNLinkedList = (source, n) => {
 
 const mergeTwoLinkedList = (source1, source2) => {
   // 定义 一个 head
-  let head = null
+  let head = function() {
+    this.val = null
+    this.next = null
+  }
+
   let l1
   let l2
 
-  // 获取 头节点
-  if (source1 !== null && source2 !== null) {
-    if (source1.val < source2.val) {
-      head = source1
-      l1 = source1.next
-      l2 = source2
-    } else {
-      head = source2
-      l1 = source1
-      l2 = source2.next
-    }
-  }
+  let result = head
 
   while (l1 !== null && l2!== null) {
     if (l1.val < l2.val) {
@@ -121,7 +114,7 @@ const mergeTwoLinkedList = (source1, source2) => {
   if (l1 !== null) head.next = l1
   if (l2 !== null) head.next = l2
 
-  return head.next
+  return result.next
 }
 
 // 两数相加 
