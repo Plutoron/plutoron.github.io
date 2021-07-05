@@ -16,15 +16,12 @@ function jieliu(fn, delay) {
   let pre = Date.now()
 
   return function(...args) {
-    const _this = this
     const now = Date.now()
 
     if (now - pre < delay) return 
 
-    setTimeout(() => {
-      fn.call(_this, ...args)
-      pre = Date.now()
-    }, delay)
+    fn.call(this, ...args)
+    pre = Date.now()
   }
 }
 

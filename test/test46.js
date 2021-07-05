@@ -2,7 +2,7 @@
 
 // 输入：[8, 1, 2, 4] 输出：3
 
-const getMax = (source) => {
+const getMaxGap = (source) => {
   let max = 0
 
   let minIndex = 0
@@ -22,5 +22,5 @@ const getMax = (source) => {
   return max
 }
 
-console.log(getMax([1, 2, 4, 8]))
-console.log(getMax([8, 1, 2, 4]))
+console.log(getMaxGap([1, 2, 4, 8]))
+console.log(getMaxGap([8, 1, 2, 4]))
