@@ -15,6 +15,7 @@ const Catalogue = lazy(() => import('mods/catalogue'))
 const MdReader = lazy(() => import('mods/md-reader'))
 const RegionSelect = lazy(() => import('mods/region-select'))
 const Mark = lazy(() => import('mods/mark'))
+const MissEvan = lazy(() => import('mods/miss-evan'))
 // const ReactPDF = lazy(() => import('mods/react-pdf'))
 
 const App = () => {
@@ -45,6 +46,12 @@ const App = () => {
               exact
               path={'/mark'}
               component={Mark}
+            />
+
+            <Route 
+              exact
+              path={'/miss-evan'}
+              component={MissEvan}
             />
 
             {/* <Route 

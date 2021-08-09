@@ -197,7 +197,7 @@ module.exports = (env, argv) => {
           // '/vendor/moment/2.24.0/moment.min.js',
           // '/vendor/moment/2.24.0/locale/zh-cn.js',
           // '/vendor/antd/3.26.7/antd-with-locales.min.js',
-          '/service-worker-app.js'
+          // '/service-worker-app.js'
         ],
         template: './template/index.html',
         minify: {
