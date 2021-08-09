@@ -54,7 +54,7 @@ module.exports = (env, argv) => {
       path: resolve('dist'),
       filename: '[name].js',
       chunkFilename: isDEV ? '[name].chunk.js' : '[name].[contenthash].js',
-      publicPath: '/',
+      publicPath: isDEV ? '/' : './',
     },
     optimization: {
       ...(isDEV ? {} : {
@@ -190,14 +190,14 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        jses: [
+        jses: isDEV ? [] : [
           // '/vendor/react/16.12.0/react.production.min.js',
           // '/vendor/react-dom/16.12.0/react-dom.production.min.js',
           // '/vendor/react-router-dom/5.1.2/react-router-dom.min.js',
           // '/vendor/moment/2.24.0/moment.min.js',
           // '/vendor/moment/2.24.0/locale/zh-cn.js',
           // '/vendor/antd/3.26.7/antd-with-locales.min.js',
-          // '/service-worker-app.js'
+          './service-worker-app.js'
         ],
         template: './template/index.html',
         minify: {
