@@ -1,0 +1,110 @@
+.album-cover 
+  width 160px
+  .album-cover-top 
+    .cover-top
+      position relative
+
+      .top-cover-wrap
+        height 160px
+
+        .top-cover
+          width 100%
+          height 100%
+          border 1px solid #bdbdbd
+          border-radius 5px
+          position absolute
+          background-color #fff
+          top 0 
+          left 0
+          overflow hidden
+
+          &.top 
+            z-index 3
+
+            img 
+              width 100%
+              height 100%
+
+            .theme-cover
+              height 100%
+              width 100%
+              display flex
+              align-items center  
+              justify-content flex-end
+              position relative
+
+              .mask 
+                position absolute
+                top 0
+                left 0
+                width 100%
+                height 100%
+                background linear-gradient(to bottom, rgba(255, 255, 255, .4), transparent)
+
+              .text-wrap
+                text-align end
+                color #fff
+                padding-right 10px
+                margin-top -16px
+                
+                .title
+                  font-size 26px
+                  line-height 26px
+                  font-weight 500
+                  margin-bottom 6px
+
+                .subtitle
+                  margin-top 6px
+                  font-size 30px
+                  line-height 30px
+                  font-weight 500
+
+          &.mid 
+            top -3px
+            left 3px
+            z-index 2
+
+          &.bottom 
+            top -6px
+            left 6px
+        
+      .song-number
+        position absolute
+        bottom 0
+        left 0
+        width 100%
+        height 20px
+        padding-right 10px
+        background linear-gradient(to right, transparent, rgba(0, 0, 0, .02) 30%, #000)
+        z-index 3
+        border-bottom-right-radius 5px
+        display flex
+        align-items center
+        justify-content flex-end
+        color #fff
+
+        .music-icon 
+          height 12px
+          width 12px
+        
+        span 
+          margin-left 4px
+
+    .album-title 
+      margin-top 4px
+      margin-right 4px
+      margin-left 4px
+      font-size 14px
+      color #000
+
+  .album-author
+    margin-top 6px
+    margin-right 4px
+    margin-left 4px
+    color #9e9e9e
+
+.omit 
+  display block
+  white-space nowrap
+  text-overflow ellipsis
+  overflow hidden
