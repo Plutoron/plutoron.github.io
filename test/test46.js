@@ -10,10 +10,12 @@ const getMaxGap = (source) => {
   for (let i = 0; i < source.length; i++) {
     const diff = source[i] - source[minIndex]
 
+    // 升序 更新最大
     if (diff > max) {
       max = diff
     }
 
+    // gap 更新 最小索引
     if (diff < 0) {
       minIndex = i
     }
